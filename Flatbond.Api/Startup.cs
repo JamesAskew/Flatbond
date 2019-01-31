@@ -30,6 +30,7 @@ namespace Flatbond.Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<IConfigService, ConfigService>();
             services.AddTransient<IDataRepository, DataRepository>();
+            services.AddTransient<IFlatbondService, FlatbondService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
