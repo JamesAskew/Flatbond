@@ -28,12 +28,7 @@ namespace Flatbond.Services
         public Config GetConfigByClientId(int clientId)
         {
             var config = this._dataRepository.GetAllConfigs().FirstOrDefault(x => x.Client_Id == clientId);
-            if (config != null)
-            {
-                return config;
-            }
-
-            return new Config();
+            return config;
         }
     }
 }
