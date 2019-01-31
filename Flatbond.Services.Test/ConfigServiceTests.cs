@@ -20,16 +20,13 @@ namespace Flatbond.Services.Test
         }
 
         [Fact]
-        public void GetConfigByClientId_ReturnsEmptyConfig_ForNotFound()
+        public void GetConfigByClientId_ReturnsNull_ForNotFound()
         {
             var configService = new ConfigService(new DataRepository());
 
             var config = configService.GetConfigByClientId(99);
 
-            Assert.IsType<Config>(config);
-            Assert.Equal(0, config.Client_Id);
-            Assert.Equal(0, config.Fixed_Membership_Fee_Amount);
-            Assert.False(config.Fixed_Membership_Fee);
+            Assert.True(config == null);
         }
 
         [Fact]
