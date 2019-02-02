@@ -27,9 +27,9 @@ namespace Flatbond.Api.Controllers
         }
 
         [HttpGet("{client_id}")]
-        public IActionResult Index(int clientId)
+        public IActionResult Index(int client_Id)
         {
-            var config = this._configService.GetConfigByClientId(clientId);
+            var config = this._configService.GetConfigByClientId(client_Id);
             if (config == null)
                 return NotFound();
 
