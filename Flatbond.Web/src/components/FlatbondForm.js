@@ -9,30 +9,71 @@ import {
   Button,
   InputGroup,
   InputGroupAddon,
-  InputGroupText
+  InputGroupText,
+  FormFeedback
 } from "reactstrap";
 
 const FlatbondForm = props => {
-  const validateRent = e => {
-    const intRent = Number(e.target.value);
-    let validationState;
+  const validateRent = (rent, rentFrequency) => {
+    const intRent = Number(rent);
+    let validationState = "has-success";
+    let rent_frequency =
+      rentFrequency !== undefined ? rentFrequency : props.rentFrequency;
 
+    // validate rent is a numbers
     if (isNaN(intRent)) {
       validationState = "has-danger";
       props.onValidationChange("rent", validationState);
       return;
     }
+    console.log(rent_frequency);
+    console.log(intRent);
+    // validate Minimum and Maximum rent amounts
+    if (rent_frequency === "Weekly") {
+      console.log("in weekly");
+      if (intRent < 25) {
+        validationState = "has-danger";
+        props.onValidationChange(
+          "rent_error",
+          "Minimum rent amount is £25 per week"
+        );
+      }
+      if (intRent > 2000) {
+        validationState = "has-danger";
+        props.onValidationChange(
+          "rent_error",
+          "Maximum rent amount is £2000 per week"
+        );
+      }
+    }
+    if (rent_frequency === "Monthly") {
+      if (intRent < 110) {
+        validationState = "has-danger";
+        props.onValidationChange(
+          "rent_error",
+          "Minimum rent amount is £110 per month"
+        );
+      }
+      if (intRent > 8660) {
+        validationState = "has-danger";
+        props.onValidationChange(
+          "rent_error",
+          "Maximum rent amount is £8660 per month"
+        );
+      }
+    }
 
+    // validate rent is greater than 0
     if (intRent <= 0) {
       validationState = "has-danger";
-    } else {
-      validationState = "has-success";
     }
+
     props.onValidationChange("rent", validationState);
   };
 
-  const validateRentFrequency = () => {
-    props.onValidationChange("rent_frequency", "has-success");
+  const validateRentFrequency = e => {
+    validateRent(props.rent, e.target.value);
+    props.onValidationChange("rent_frequency", e.target.value);
   };
 
   const validatePostcode = e => {
@@ -47,10 +88,7 @@ const FlatbondForm = props => {
   };
   const validateAndSubmitForm = e => {
     e.preventDefault();
-
-    if (props.rentFrequency !== "") {
-      props.onClick();
-    }
+    props.onClick();
   };
 
   return (
@@ -71,10 +109,11 @@ const FlatbondForm = props => {
                   valid={props.validRent === "has-success"}
                   invalid={props.validRent === "has-danger"}
                   onChange={e => {
-                    props.onChange(e);
-                    validateRent(e);
+                    props.onChange([e.target.name], e.target.value);
+                    validateRent(e.target.value);
                   }}
                 />
+                <FormFeedback>{props.rent_error}</FormFeedback>
               </InputGroup>
             </FormGroup>
           </Col>
@@ -86,10 +125,10 @@ const FlatbondForm = props => {
                   name="rent_frequency"
                   id="rent_frequency_monthly"
                   value="Monthly"
-                  valid={props.rentFrequency === "has-success"}
+                  valid={props.rentFrequency !== ""}
                   onChange={e => {
-                    validateRentFrequency();
-                    props.onChange(e);
+                    validateRentFrequency(e);
+                    props.onChange([e.target.name], e.target.value);
                   }}
                 />
                 <Label for="rent_frequency_monthly" check>
@@ -102,10 +141,10 @@ const FlatbondForm = props => {
                   name="rent_frequency"
                   id="rent_frequency_weekly"
                   value="Weekly"
-                  valid={props.rentFrequency === "has-success"}
+                  valid={props.rentFrequency !== ""}
                   onChange={e => {
-                    validateRentFrequency();
-                    props.onChange(e);
+                    validateRentFrequency(e);
+                    props.onChange([e.target.name], e.target.value);
                   }}
                 />
                 <Label for="rent_frequency_weekly" check>
@@ -127,7 +166,7 @@ const FlatbondForm = props => {
                 invalid={props.validPostcode === "has-danger"}
                 onChange={e => {
                   validatePostcode(e);
-                  props.onChange(e);
+                  props.onChange([e.target.name], e.target.value);
                 }}
               />
             </FormGroup>
