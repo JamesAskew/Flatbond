@@ -28,6 +28,10 @@ namespace Flatbond.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors(o => o.AddPolicy("AllowNetlify", builder =>
+            {
+                builder.WithOrigins("https://flatbond.netlify.com/");
+            }));
             services.AddTransient<IConfigService, ConfigService>();
             services.AddTransient<IDataRepository, DataRepository>();
             services.AddTransient<IFlatbondService, FlatbondService>();

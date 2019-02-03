@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Flatbond.Services;
 using Flatbond.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace Flatbond.Api.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
+    [EnableCors("AllowNetlify")]
     public class ConfigController : ControllerBase
     {
         private readonly IConfigService _configService;

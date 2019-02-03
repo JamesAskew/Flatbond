@@ -1,11 +1,13 @@
 ﻿using Flatbond.Domain.Models;
 using Flatbond.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Flatbond.Api.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
+    [EnableCors("AllowNetlify")]
     public class FlatbondController : ControllerBase
     {
         private readonly IFlatbondService _flatbondService;
