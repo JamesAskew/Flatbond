@@ -1,0 +1,129 @@
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.78571429;
+  color: #fff;
+  background-color: #2d2735;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.btn {
+  display: block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 1px solid #f7ba6a;
+  color: #f7ba6a;
+  background-color: #1c1821;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 15px;
+  line-height: 1.78571429;
+  border-radius: 5px;
+  border-width: 2px;
+  display: block;
+  width: 100%;
+}
+.btn:hover:enabled {
+  color: #f7ba6a;
+  background-color: #17141b;
+  border-color: #f49f30;
+}
+
+.form {
+  display: block;
+  margin-top: 4em;
+  padding: 4rem;
+  background-color: #1c1821;
+  border-radius: 0.5rem;
+}
+
+.form .form-title {
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+}
+.form .form-title {
+  font-family: Courgette, cursive;
+  font-weight: 400;
+}
+
+.form .form-control {
+  background-color: #2d2735;
+}
+
+.form-control,
+.form-control.focus,
+.form-control:focus {
+  box-shadow: none !important;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  color: #cbcfd4;
+  border-bottom-color: #898890;
+}
+.form-control {
+  height: 45px;
+  padding: 12px 20px;
+  border-bottom-width: 2px;
+  border-bottom-color: #2d2735;
+}
+.form-control {
+  width: 100%;
+  height: 40px;
+  padding: 6px 12px;
+  background-color: #16131a;
+  border: 1px solid #120f15;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.form-control,
+output {
+  font-size: 15px;
+  line-height: 1.78571429;
+  color: #fff;
+  display: block;
+}
+
+.input-group-prepend span {
+  background-color: #2d2735;
+  border-radius: 5px;
+  border: solid 1px #120f15;
+}
+
+.form-checklist {
+  padding-top: 5px;
+  float: left;
+  color: #cbcfd4;
+}
+
+input[type="radio"]:focus {
+  outline: 1px auto #898890;
+}
+.results-label {
+  text-align: left;
+}
+.btnLink {
+  margin-top: 20px;
+  color: #f7ba6a;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.btnLink:hover {
+  color: #f49f30;
+}
