@@ -13,7 +13,9 @@ class App extends Component {
       configLoaded: false,
       flatbondPosted: false,
       form: {},
-      validate: {}
+      validate: {
+        rent_frequency: ""
+      }
     };
   }
 
@@ -56,9 +58,9 @@ class App extends Component {
     });
   };
 
-  inputChangeHandler = e => {
+  inputChangeHandler = (name, value) => {
     let form = this.state.form;
-    form[e.target.name] = e.target.value;
+    form[name] = value;
 
     this.setState({ form: form });
   };
@@ -76,7 +78,9 @@ class App extends Component {
       configLoaded: false,
       flatbondPosted: false,
       form: {},
-      validate: {}
+      validate: {
+        rent_frequency: ""
+      }
     });
 
     this.getConfigAndSetup();
@@ -86,7 +90,7 @@ class App extends Component {
     let validationState = this.state.validate;
     if (
       validationState.rent === "has-success" &&
-      validationState.rent_frequency === "has-success" &&
+      validationState.rent_frequency !== "" &&
       validationState.postcode === "has-success"
     ) {
       validationState.form = true;
@@ -112,7 +116,10 @@ class App extends Component {
             onValidationChange={this.validationChangeHandler}
             validPostcode={this.state.validate.postcode}
             validRent={this.state.validate.rent}
+            invalidRentMessage={this.state.validate.invalid_rent_message}
             rentFrequency={this.state.validate.rent_frequency}
+            rent={this.state.form.rent}
+            rent_error={this.state.validate.rent_error}
             isFormValid={this.state.validate.form}
           />
         )}
