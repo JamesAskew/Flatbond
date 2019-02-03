@@ -30,7 +30,7 @@ namespace Flatbond.Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors(o => o.AddPolicy("AllowNetlify", builder =>
             {
-                builder.WithOrigins("https://flatbond.netlify.com/");
+                builder.WithOrigins("https://flatbond.netlify.com").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
             }));
             services.AddTransient<IConfigService, ConfigService>();
             services.AddTransient<IDataRepository, DataRepository>();
