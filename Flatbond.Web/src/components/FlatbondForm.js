@@ -26,11 +26,9 @@ const FlatbondForm = props => {
       props.onValidationChange("rent", validationState);
       return;
     }
-    console.log(rent_frequency);
-    console.log(intRent);
+
     // validate Minimum and Maximum rent amounts
     if (rent_frequency === "Weekly") {
-      console.log("in weekly");
       if (intRent < 25) {
         validationState = "has-danger";
         props.onValidationChange(
